@@ -25,7 +25,7 @@ class MyString
         int getNlength () const;
         void reverseit ();
         int compareStr (const MyString &lhs, const MyString &rhs);
-        //friend ostream & operator<< (ostream &os, const MyString &myString);
+        friend ostream & operator<< (ostream &os, const MyString &myString);
 };
 //friend ostream & operator<< (ostream &os, const MyString &myString);
 #endif //HW7_MYSTRING_H
