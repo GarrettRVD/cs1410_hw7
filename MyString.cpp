@@ -44,8 +44,13 @@ void MyString::reverseit ()
        swap(internalCString[i], internalCString[n-i-1]);
 }
 
-int compareStr (const MyString &lhs, const MyString &rhs)
+int MyString::compareStr (const MyString &lhs, const MyString &rhs)
 {
+
+    if(lhs.getNlength() < rhs.getNlength()) return -1;
+    else if (lhs.getNlength() > rhs.getNlength()) return 1;
+    else if(lhs.internalCString[0] == rhs.internalCString[0]) return 0;
+    else return -2;
 
 }
 ostream & operator<< (ostream &os, const MyString &myString)
