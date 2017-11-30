@@ -7,7 +7,9 @@
 
 using namespace std;
 
-//  assigning a value to a unique pointer   http://www.cplusplus.com/reference/memory/unique_ptr/release/
+/*!
+ * Default constructor
+ */
 MyString::MyString ()
 {
     nlength=1;
@@ -15,7 +17,10 @@ MyString::MyString ()
     internalCString[0] = '\0';
 }
 
-//  using the equals sign with a unique pointer   http://www.cplusplus.com/reference/memory/unique_ptr/operator=/
+/*!
+ * Constructor with one argument
+ * @param cString : const char
+ */
 MyString::MyString(const char *cString)
 {
     nlength = 1;
@@ -26,24 +31,40 @@ MyString::MyString(const char *cString)
         internalCString[len] = cString[len];
     internalCString[(nlength+1)] = '\0';
 }
-//   getting a unique pointer   http://www.cplusplus.com/reference/memory/unique_ptr/get/
+
+/*!
+ * getInternalCString : getter
+ * @return : internalCString
+ */
 char *MyString::getInternalCString () const
 {
     return internalCString.get();
 }
-// explains several ways to acomplish the task in this fourm https://stackoverflow.com/questions/4180818/finding-the-length-of-a-character-array-in-c
-//returns the size of a character array using a pointer to the first element of the character array
+
+/*!
+ * getNlength : getter
+ * @return : nlength
+ */
 int MyString::getNlength () const
 {
     return nlength;
 }
-// at this site are several ways to revese char array http://www.cplusplus.com/forum/general/14951/
+
+/*!
+ * reverseit : revert char array
+ */
 void MyString::reverseit ()
 {
     for (int i=0, n = getNlength(); i<n/2; i++)
        swap(internalCString[i], internalCString[n-i-1]);
 }
 
+/*!
+ * compareStr : compare two MyString objects
+ * @param lhs : const MyString
+ * @param rhs : const MyString
+ * @return position
+ */
 int MyString::compareStr (const MyString &lhs, const MyString &rhs)
 {
 
@@ -53,6 +74,13 @@ int MyString::compareStr (const MyString &lhs, const MyString &rhs)
     else return -2;
 
 }
+
+/*!
+ * operator << overload
+ * @param os : ostream
+ * @param myString : const MyString
+ * @return os
+ */
 ostream & operator<< (ostream &os, const MyString &myString)
 {
     os << myString.getInternalCString();
